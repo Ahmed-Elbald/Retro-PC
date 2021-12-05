@@ -1,0 +1,293 @@
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: 'Cairo', sans-serif;
+}
+i {
+    cursor: pointer;
+}
+:root {
+    --background: #fecb2b;
+    --screen: #01d2be;
+    --frame: #fff8f4;
+    --outine-buttons: #6b1737;
+    --side-main: #ff5d5d;
+    --side-scond: #e93751;
+    --base: #e69a99;
+    --general: 15px;
+    --linear-gradiant: linear-gradient(to bottom, var(--frame) 5% , var(--side-main) 5% , var(--side-main) 80% , var(--side-scond) 80%);
+}
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+html,
+body {
+    height: 100%;
+}
+.container {
+    max-width: 30em;
+    height: 30em;
+    background-color: var(--background);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.retro-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+}
+.retro-body > .main-body {
+    border-radius: 10px;
+    perspective: 400px;
+    padding: 10px;
+    background-color: var(--outine-buttons);
+    border: 4px solid white;
+}
+.main-body > .main-body-cont {
+    display: flex;
+    background-image: var(--linear-gradiant);
+    border-radius: 12px;
+}
+.retro-body > .main-body > .main-body-cont > .front-side {
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid var(--outine-buttons);
+    background-color: var(--frame);
+}
+.front-side > .screen-frame {
+    background-color: var(--outine-buttons);
+    padding: var(--general) 2px 2px var(--general);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.front-side > .screen-frame > img {
+    width: 2em;
+    height: 6em;
+    position: absolute;
+    z-index: 1;
+    transform: rotate(25deg) translate(-22px,-18px);
+    opacity: .5;
+}
+.screen-frame > .real-screen {
+    width: 6.5em;
+    height: 5em;
+    border-radius: 5px 0 5px 0;
+    background-color: var(--screen);
+}
+.front-side > .buttons-container {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+}
+.front-side > .buttons-container > .circle:not(:last-child) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--outine-buttons);
+}
+.front-side > .buttons-container > .big-circle {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--outine-buttons);
+}
+.main-body > .main-body-cont > .com-side {
+    padding: 0 10px;
+}
+.com-side > .lines-cont {
+    top: 20%;
+}
+.com-side  .line {
+    width: 25px;
+    height: 1px;
+    background-color: var(--outine-buttons);
+    margin-bottom: 10px;
+}
+.main-body > .main-body-cont > .back-side {
+    height: 80%;
+    width: 2.5em;
+    position: absolute;
+    top: 50%;
+    right: calc(-2.5em - 10px);
+    z-index: -1;
+    transform: translate(0,-50%) rotateY(45deg);
+    transform-origin: left;
+}
+.main-body > .main-body-cont > .back-side > .back-top {
+    height: 70%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: skewY(9deg);
+    background-image: linear-gradient(to bottom, var(--frame) 20% , var(--side-main) 20%);
+    border: 10px solid var(--outine-buttons);
+    border-bottom: none;
+    border-radius: 0 20px 0 0;
+}
+.main-body > .main-body-cont > .back-side > .back-top::before {
+    content: "";
+    width: calc(100% + 20px);
+    height: 100%;
+    transform: skewY(9deg);
+    border-radius: 0 20px 0 0;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border: 5px solid white;
+    border-left: navajowhite;
+    border-bottom: navajowhite;
+}
+.main-body > .main-body-cont > .back-side > .back-bottom {
+    height: 70%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: skewY(-9deg);
+    background-image: linear-gradient(to bottom, var(--side-main) 20% , var(--side-scond) 20%);
+    border: 10px solid var(--outine-buttons);
+    border-top: none;
+    border-radius: 0 0 20px 0;
+    z-index: -1;
+}
+.main-body > .main-body-cont > .back-side > .back-bottom::before {
+    content: "";
+    width: calc(100% + 20px);
+    height: 100%;
+    transform: skewY(-9deg);
+    border-radius: 0 0 20px 0;
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    border: 5px solid white;
+    border-left: navajowhite;
+    border-top: navajowhite;
+}
+.body-base {
+    display: flex;
+    justify-content: space-between;
+    top: -5px;
+    width: 80%;
+    margin: auto;
+    background-color: var(--outine-buttons);
+    padding: 2px 10px;
+}
+.body-base > div:first-child {
+    width: 70%;
+    height: 6px;
+    background-color: var(--base);
+}
+.body-base > div:last-child {
+    width: 28%;
+    height: 6px;
+    background-color: var(--base);
+}
+.base {
+    background-color: var(--outine-buttons);
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    z-index: -1;
+    width: 110%;
+    left: 50%;
+    transform: translate(-50%,0);
+    border: 3px solid white;
+    transform-style: preserve-3d;
+    top: -10px;
+}
+.base::before {
+    content: "";
+    background-color: var(--outine-buttons);
+    border: 3px solid white;
+    border-left: none;
+    position: absolute;
+    height: 12px;
+    bottom: -3px;
+    right: -28px;
+    width: 25px;
+    border-radius: 0 15px 15px 0;
+}
+.base::after {
+    content: "";
+    background-color: var(--outine-buttons);
+    border: 3px solid white;
+    border-right: none;
+    position: absolute;
+    height: 12px;
+    bottom: -3px;
+    left: -28px;
+    width: 25px;
+    border-radius: 15px 0 0 15px;
+}
+.base > .base-cont {
+    display: flex;
+    background-image: linear-gradient(to bottom, 
+                    var(--frame) 20% , var(--side-main) 20% , var(--side-main) 60% , var(--side-scond) 60%);
+}
+.base  > .base-cont > .front-base {
+    border-radius: 5px 5px 0 0;
+    background-color: var(--frame);
+    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+    outline: 3px solid var(--outine-buttons);
+    width: 80%;
+    justify-content: space-between;
+}
+.base > .base-cont > .front-base > .base-buttons {
+    background-color: var(--outine-buttons);
+    padding: 2px;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+.base > .base-cont > .front-base > .base-buttons > .base-buttons-cont {
+    background-color: var(--base);
+    display: flex;
+    padding: 2px;
+    padding-right: 4px;
+    padding-left: 0;
+    align-items: center;
+    column-gap: 15px;
+}
+.base > .base-cont > .front-base > .base-buttons > .base-buttons-cont > .base-lines {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+}
+.base > .base-cont > .front-base > .base-buttons > .base-buttons-cont .base-line {
+    width: 20px;
+    height: 1px;
+    background-color: var(--outine-buttons);
+    margin-bottom: 1px;
+}
+.base > .base-cont > .front-base > .base-buttons > .base-buttons-cont > .circle {
+    background-color: var(--screen);
+    border: 2px solid var(--outine-buttons);
+    box-shadow: 3px 0 0 0 var(--outine-buttons);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.base > .base-cont > .front-base > .dvd {
+    width: 40px;
+    height: 12px;
+    background-color: var(--outine-buttons);
+    border-radius: 3px;
+}
