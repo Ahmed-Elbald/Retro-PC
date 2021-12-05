@@ -36,6 +36,13 @@ html,
 body {
     height: 100%;
 }
+.circle {
+    transition-duration: .3s;
+    cursor: pointer;
+}
+.circle:not(.base-circle):hover {
+    background-color: var(--screen) !important;
+}
 .container {
     max-width: 30em;
     height: 30em;
