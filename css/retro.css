@@ -9,9 +9,6 @@
     text-transform: capitalize;
     font-family: 'Cairo', sans-serif;
 }
-i {
-    cursor: pointer;
-}
 :root {
     --background: #fecb2b;
     --screen: #01d2be;
@@ -23,41 +20,30 @@ i {
     --general: 15px;
     --linear-gradiant: linear-gradient(to bottom, var(--frame) 5% , var(--side-main) 5% , var(--side-main) 80% , var(--side-scond) 80%);
 }
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-}
-.center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.center-position {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 html,
 body {
     height: 100%;
 }
-.circle {
-    transition-duration: .3s;
-    cursor: pointer;
-}
-.circle:not(.base-circle):hover {
-    background-color: var(--screen) !important;
+p {
+    color: var(--outine-buttons);
+    margin: auto;
+    width: max-content;
+    font-weight: bold;
 }
 .container {
     max-width: 30em;
     height: 30em;
     background-color: var(--background);
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding-top: 20px;
 }
 .retro-body {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 10px;
 }
 .retro-body > .main-body {
     border-radius: 10px;
@@ -69,7 +55,7 @@ body {
 .main-body > .main-body-cont {
     display: flex;
     background-image: var(--linear-gradiant);
-    border-radius: 12px;
+    border-radius: 10px;
 }
 .retro-body > .main-body > .main-body-cont > .front-side {
     padding: 10px;
@@ -78,24 +64,34 @@ body {
     background-color: var(--frame);
 }
 .front-side > .screen-frame {
+    width: 8em;
+    height: 5.9em;
+    padding: var(--general) 3px 2px var(--general);
     background-color: var(--outine-buttons);
-    padding: var(--general) 2px 2px var(--general);
     border-radius: 5px;
     margin-bottom: 10px;
+    transition-duration: .3s;
 }
 .front-side > .screen-frame > img {
     width: 2em;
     height: 6em;
     position: absolute;
     z-index: 1;
-    transform: rotate(25deg) translate(-22px,-18px);
+    transform: rotate(25deg) translate(-28px,-18px);
     opacity: .5;
+    transition-duration: .3s;
 }
 .screen-frame > .real-screen {
-    width: 6.5em;
-    height: 5em;
+    width: 100%;
+    height: 100%;
     border-radius: 5px 0 5px 0;
     background-color: var(--screen);
+}
+.front-side:focus-within  .screen-frame {
+    padding: 2px;
+}
+.front-side:focus-within .screen-frame > img {
+    opacity: 0;
 }
 .front-side > .buttons-container {
     display: flex;
@@ -106,7 +102,45 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+}
+.front-side > .buttons-container > .circle input {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
     background-color: var(--outine-buttons);
+}
+.front-side > .buttons-container > .circle input:hover {
+    background-color: var(--screen);
+}
+.front-side > .buttons-container > .circle input:focus {
+    background-color: var(--background);
+}
+.front-side > .buttons-container > .circle img {
+    width: 7.9em;
+    height: 5.7em;
+    border-radius: 5px 0 5px 0;
+    position: absolute;
+    top: -108px;
+    opacity: 0;
+    transition-duration: .3s;
+    z-index: 2;
+}
+.front-side > .buttons-container > .circle:first-child img {
+    left: 1px;
+}
+.front-side > .buttons-container > .circle:nth-child(4) img {
+    left: -44px;
+}
+.front-side > .buttons-container > .circle:nth-child(2) img {
+    left: -14px;
+}
+.front-side > .buttons-container > .circle:nth-child(3) img {
+    left: -29px;
+}
+.front-side > .buttons-container > .circle input:focus + img {
+    opacity: 1;
 }
 .front-side > .buttons-container > .big-circle {
     margin-left: auto;
@@ -115,11 +149,34 @@ body {
     border-radius: 50%;
     background-color: var(--outine-buttons);
 }
-.main-body > .main-body-cont > .com-side {
-    padding: 0 10px;
+.front-side > .buttons-container > .big-circle input {
+    width: 20px;
+    height: 20px;
+}
+.front-side > .buttons-container > .big-circle div {
+    width: 7.1em;
+    height: 4.9em;
+    position: absolute;
+    top: -90px;
+    left: -96px;
+    border-radius: 5px 0 5px 0;
+    background-color: var(--side-scond);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition-duration: .3s;
+}
+.front-side > .buttons-container > .big-circle input:focus + div {
+    opacity: 0;
+}
+.front-side > .buttons-container > .big-circle input:focus {
+    background-color: rgb(28, 175, 28);
 }
 .com-side > .lines-cont {
     top: 20%;
+    margin: 0 10px;
 }
 .com-side  .line {
     width: 25px;
@@ -128,13 +185,12 @@ body {
     margin-bottom: 10px;
 }
 .main-body > .main-body-cont > .back-side {
-    height: 80%;
+    height: 75%;
     width: 2.5em;
     position: absolute;
     top: 50%;
     right: calc(-2.5em - 10px);
-    z-index: -1;
-    transform: translate(0,-50%) rotateY(45deg);
+    transform: translate(0,-50%) rotateY(55deg);
     transform-origin: left;
 }
 .main-body > .main-body-cont > .back-side > .back-top {
@@ -143,7 +199,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    transform: skewY(9deg);
+    transform: skewY(10deg);
     background-image: linear-gradient(to bottom, var(--frame) 20% , var(--side-main) 20%);
     border: 10px solid var(--outine-buttons);
     border-bottom: none;
@@ -153,7 +209,7 @@ body {
     content: "";
     width: calc(100% + 20px);
     height: 100%;
-    transform: skewY(9deg);
+    transform: skewY(10deg);
     border-radius: 0 20px 0 0;
     position: absolute;
     top: -10px;
@@ -168,18 +224,17 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: skewY(-9deg);
+    transform: skewY(-10deg);
     background-image: linear-gradient(to bottom, var(--side-main) 20% , var(--side-scond) 20%);
     border: 10px solid var(--outine-buttons);
     border-top: none;
     border-radius: 0 0 20px 0;
-    z-index: -1;
 }
 .main-body > .main-body-cont > .back-side > .back-bottom::before {
     content: "";
     width: calc(100% + 20px);
     height: 100%;
-    transform: skewY(-9deg);
+    transform: skewY(-10deg);
     border-radius: 0 0 20px 0;
     position: absolute;
     bottom: -10px;
@@ -214,33 +269,28 @@ body {
     z-index: -1;
     width: 110%;
     left: 50%;
+    top: -10px;
     transform: translate(-50%,0);
     border: 3px solid white;
-    transform-style: preserve-3d;
-    top: -10px;
 }
-.base::before {
-    content: "";
-    background-color: var(--outine-buttons);
-    border: 3px solid white;
-    border-left: none;
-    position: absolute;
-    height: 12px;
-    bottom: -3px;
-    right: -28px;
-    width: 25px;
-    border-radius: 0 15px 15px 0;
-}
+.base::before,
 .base::after {
     content: "";
     background-color: var(--outine-buttons);
     border: 3px solid white;
-    border-right: none;
-    position: absolute;
     height: 12px;
+    position: absolute;
     bottom: -3px;
-    left: -28px;
     width: 25px;
+}
+.base::before {
+    border-left: none;
+    right: -28px;
+    border-radius: 0 15px 15px 0;
+}
+.base::after {
+    border-right: none;
+    left: -28px;
     border-radius: 15px 0 0 15px;
 }
 .base > .base-cont {
